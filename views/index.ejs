@@ -1,0 +1,207 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/revealani2.css">
+    <link rel="stylesheet" href="/styles/revealani.css">
+    <link rel="stylesheet" type="text/css" href="/styles/display_container.css">
+    <link rel="stylesheet" type="text/css" href="/styles/result.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/data.js" defer></script>
+
+    <div class="main_container">
+
+        <div class="Display_container">
+
+            <div class="display_board">
+
+                <div class="result_no_screen">
+
+                    <div class="result_no" id="res_no">RENDEZOUS'24</div>
+                </div>
+
+                <div class="result_main_screen">
+                    <div class="result_main_screen_left">
+                        <div class="screen_left_logo"><img width="150px" src="/images/rend-white-logo.png" alt=""
+                                srcset=""></div>
+                        <div class="screen_left_result_no">
+                            <h2 class="animate__animated animate__fadeIn result_no_small" id="result_no_small"></h2>
+                        </div>
+                        <div class="screen_left_space"></div>
+                        <div class="animate__animated animate__flipInX screen_left_programme_name" id="programme_name">
+                        </div>
+                        <div class="animate__animated animate__fadeInUp screen_left_category" id="cat"></div>
+                    </div>
+                    <div class="result_main_screen_right">
+
+
+
+                        <div class="screen_right_container">
+
+                            <div class="fc first_container">
+                                <div class="fn1 first_number">01</div>
+                                <div id="first_box" class="first_name_container ">
+                                    <div id="first_student" class="first_name"></div>
+                                    <div id="first_student_group" class="first_campus"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="fc second_container">
+                                <div class="fn2 first_number">02</div>
+                                <div class="first_name_container">
+                                    <div id="second_student" class="first_name"></div>
+                                    <div id="second_student_group" class="first_campus"></div>
+                                </div>
+                            </div>
+                            <div class="fc third_container">
+                                <div class="fn3 first_number">03</div>
+                                <div class="first_name_container">
+                                    <div id="third_student" class="first_name"></div>
+                                    <div id="third_student_group" class="first_campus"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="sensing_logo">
+                        <img src="/images/sensing-logo.png" alt="" width="100px">
+                    </div>
+                </div>
+
+
+                <div id="display2"></div>
+                <div id="display1">
+
+                </div>
+
+
+            </div>
+
+            <div class="display_controller">
+                <div class="main_buttons">
+                    <button type="button" class="btn btn-dark">Temp 01</button>
+                    <button type="button" class="btn btn-dark">Temp 02</button>
+                    <button type="button" class="btn btn-dark">Temp 03</button>
+                    <button type="button" class="btn btn-dark">Team</button>
+                </div>
+                <hr class="hr">
+                <center>
+                    <div class="scene_switcher">
+
+                        <button type="button" id="start_btn" class="btn btn-success sb" style="width: 95%;">Screen
+                            01</button>
+                        <button type="button" id="second_start_btn" class="btn btn-dark sb"
+                            style="width: 95%;">Start</button>
+                        <button type="button" id="first_btn" class="btn btn-dark sb" style="width: 95%;">First</button>
+                        <button type="button" id="second_btn" class="btn btn-dark sb"
+                            style="width: 95%;">Second</button>
+                        <button type="button" id="third_btn" class="btn btn-dark sb" style="width: 95%;">Third</button>
+                        <button type="button" id="reset_btn" class="btn btn-dark sb" style="width: 95%;">Reset</button>
+
+                    </div>
+                    <div class="result_btn">
+
+                        <% data.sort((a, b)=> b.id - a.id);
+                            data.forEach(item => {
+                            %>
+                            <button type="button" class="btn btn-light resultbtn"
+                                onclick="showData('<%= item.id %>','<%= item.pgmname %>', '<%= item.category %>','<%= item.first.studentName %>', '<%= item.first.studentGroup %>','<%= item.second[0].studentName %>','<%= item.second[0].studentGroup %>','<%= item.third[0].studentName %>','<%= item.third[0].studentGroup %>')">
+                                Result <%= item.id %>
+                            </button>
+                            <% }); %>
+
+
+
+
+
+                    </div>
+                </center>
+            </div>
+        </div>
+
+
+        <div class="timer_container">
+            <div class="sub-container1">
+                <div class="reveal-text timer_div" id="timer">
+                    <span id="minutes">00</span>:<span id="seconds">00</span>
+                </div>
+            </div>
+            <div class="sub-container2">
+
+
+                <div class="timer_controller">
+                  <div class="warning_btn_container"><h7>Warning bell</h7>
+                   <div> <input type="text" class="time_input" id="inputWarningBellMinutes" placeholder="00" > :
+                    <input type="text" class="time_input" id="inputWarningBellSeconds" placeholder="00"></div>
+                </div>
+                    <div class="last_btn_container"><h7>Last Bell</h7>
+                        <div>
+                        <input type="text" class="time_input" id="inputLastBellMinutes" placeholder="00" > :
+                        <input type="text" class="time_input" id="inputLastBellSeconds"placeholder="00">
+                    </div>
+                    </div>
+                   <div>
+                    <button class="timer-start btn btn-primary" id="timer-start-btn" onclick="startStopwatch()">Start</button>
+                    <button class="timer-reset btn btn-secondary" id="timer-reset-btn" onclick="resetStopwatch()">Reset</button>
+                </div>
+                </div>
+
+            </div>
+           
+        </div>
+
+    </div>
+
+    <script>
+
+
+        function showData(id, pgmname, category, firstStudentName, firstStudentGroup, secondStudentName, secondStudentGroup, thirdStudentName, thirdStudentGroup) {
+            var result_no = document.querySelector('.result_no');
+            var result_no_small = document.getElementById('result_no_small');
+            var programme_name = document.getElementById('programme_name');
+            var cat = document.getElementById("cat");
+            var first_student = document.getElementById('first_student');
+            var first_student_group = document.getElementById('first_student_group');
+            var second_student = document.getElementById('second_student');
+            var second_student_group = document.getElementById('second_student_group')
+            var third_student = document.getElementById('third_student');
+            var third_student_group = document.getElementById('third_student_group')
+
+            result_no.textContent = 'Result ' + id;
+            result_no_small.textContent = '~ Result ' + id + ' ~ ';
+            programme_name.textContent = pgmname;
+            cat.textContent = '(' + category + ')';
+            first_student.textContent = firstStudentName;
+            first_student_group.textContent = firstStudentGroup;
+            second_student.textContent = secondStudentName;
+            second_student_group.textContent = secondStudentGroup;
+            third_student.textContent = thirdStudentName;
+            third_student_group.textContent = thirdStudentGroup;
+        }
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <script src="/scripts/stopwatch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
